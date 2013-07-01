@@ -1,7 +1,5 @@
 package Iamshortman.DragonsReach.Common.Items;
 
-import Iamshortman.DragonsReach.Common.Items.ItemEnderDragonArmor;
-import Iamshortman.DragonsReach.Common.Items.ItemWings;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

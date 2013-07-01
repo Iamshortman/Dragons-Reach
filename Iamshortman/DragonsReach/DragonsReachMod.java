@@ -17,7 +17,6 @@ import Iamshortman.DragonsReach.Common.Enchantment.EnchantmentDragonsReach;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachCommonProxy;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachConfig;
 import Iamshortman.DragonsReach.Common.Items.ItemDragonsReach;
-import Iamshortman.DragonsReach.Common.Items.ItemWings;
 import Iamshortman.DragonsReach.Common.World.WorldProviderDragonsReach;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
