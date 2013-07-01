@@ -22,20 +22,15 @@ public class ItemDragonsReach extends Item
 		String temp = this.getUnlocalizedName().substring(6 + 5);
 		this.itemIcon = par1IconRegister.registerIcon("Dragon'sReach:" + temp);
 	}
-	//My Items Start here
 	
-	public static Item wings;
-	public static Item EnderDragonHead;
-	public static Item EnderDragonChestPlate;
+	//My Items Start here
+	//public static Item wings;
 	
 	
 	public static void initItems()
 	{
-		wings = new ItemWings(5000).setUnlocalizedName("WingSuit");
-		setName(wings, "Leather Wingpack");
-		
-		EnderDragonHead = new ItemEnderDragonArmor(5001,0);
-		EnderDragonChestPlate = new ItemEnderDragonArmor(5002,1);
+		//wings = new ItemWings(5000).setUnlocalizedName("WingSuit");
+		//setName(wings, "Leather Wingpack");
 	}
 	
 	public static void setName(Item item, String name)
