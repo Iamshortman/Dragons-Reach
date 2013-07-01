@@ -24,13 +24,11 @@ public class ItemDragonsReach extends Item
 	}
 	
 	//My Items Start here
-	//public static Item wings;
 	
 	
 	public static void initItems()
 	{
-		//wings = new ItemWings(5000).setUnlocalizedName("WingSuit");
-		//setName(wings, "Leather Wingpack");
+		
 	}
 	
 	public static void setName(Item item, String name)
