@@ -1,6 +1,6 @@
 Dragons-Reach
 =============
 
-A dragon themed minecraft mod
+A dragon themed minecraft mod for minecraft 1.5.2
 
-I need to add clean up the code before I upload it. More to come later.
+Still cleaning up code. 
