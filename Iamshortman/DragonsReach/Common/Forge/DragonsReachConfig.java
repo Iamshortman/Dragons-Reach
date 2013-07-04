@@ -17,11 +17,16 @@ public class DragonsReachConfig
 	public static int oreGoldID;
 	public static int oreBloodstoneID;
 	
+	//Items
+	public static int enderStaffID;
+	
 	public static void Load(FMLPreInitializationEvent evt)
 	{
 		Configuration config = new Configuration(evt.getSuggestedConfigurationFile());
 
 		config.load();
+		
+		//Blocks
 		portalID = config.getBlock("portal", 3001).getInt();
 		grassID = config.getBlock("grass", 3002).getInt();
 		dirtID = config.getBlock("dirt", 3003).getInt();
@@ -31,6 +36,9 @@ public class DragonsReachConfig
 		oreIronID = config.getBlock("oreIron", 3007).getInt();
 		oreGoldID = config.getBlock("oreGold", 3008).getInt();
 		oreBloodstoneID = config.getBlock("oreBloodstone", 3009).getInt();
+		
+		//Items
+		enderStaffID = config.getItem("Ender Staff", 3060).getInt();
 		
 		config.save();
 	}
