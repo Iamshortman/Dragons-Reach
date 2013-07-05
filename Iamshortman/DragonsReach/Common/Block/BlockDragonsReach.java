@@ -33,6 +33,7 @@ public class BlockDragonsReach extends Block
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
+		//For Vanilla Named Blocks so that names do not become messed up i add Dragon_ to the front.
 		this.blockIcon = registerIconForMod(par1IconRegister, this.getUnlocalizedName().substring(12));
 	}
 	
@@ -61,6 +62,7 @@ public class BlockDragonsReach extends Block
 	public static Block blackWoodPlanks;
 	public static Block blackWoodLeaves;
 	public static Block rainbowBridgeEmitter;
+	public static Block rainbowBridge;
 	
 	public static void initBlocks()
 	{
@@ -115,6 +117,9 @@ public class BlockDragonsReach extends Block
 		
 		rainbowBridgeEmitter = new BlockDragonsReachRainbowBridgeEmitter(2225).setUnlocalizedName("rainbowBridgeEmitter");
 		registerBlock(rainbowBridgeEmitter, ItemBlockRotatable.class, "Rainbow Bridge Emitter");
+		
+		rainbowBridge = new BlockDragonsReachRainbowBridge(2226).setUnlocalizedName("Dragom_rainbowBrige");
+		registerBlock(rainbowBridge, "Rainbow Bridge");
 	}
 	
 	/**
