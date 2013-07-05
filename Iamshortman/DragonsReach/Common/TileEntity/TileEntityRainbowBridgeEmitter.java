@@ -18,14 +18,17 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 	public void updateEntity()
 	{
 		super.updateEntity();
-		int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord);
-		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+		if (!this.worldObj.isRemote)
 		{
-			this.EmitBridge(meta); 
-		}
-		else
-		{
-			this.unEmitBridge(meta);
+			int meta = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord);
+			if (this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+			{
+				this.EmitBridge(meta);
+			}
+			else
+			{
+				this.unEmitBridge(meta);
+			}
 		}
 	}
 	
