@@ -126,8 +126,8 @@ public class BlockDragonsReachLog extends BlockDragonsReach
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.tree_top = par1IconRegister.registerIcon("Dragon'sReach:tree_top");
-        this.blockIcon = par1IconRegister.registerIcon("Dragon'sReach:tree_side"); 
+        this.tree_top = this.registerIconForMod(par1IconRegister, "tree_top");
+        this.blockIcon = this.registerIconForMod(par1IconRegister, "tree_side");
     }
 
     @Override

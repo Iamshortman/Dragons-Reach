@@ -202,9 +202,9 @@ public class BlockDragonsReachLeaves extends BlockDragonsReach implements IShear
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-    	super.registerIcons(par1IconRegister);
-		String temp = this.getUnlocalizedName().substring(6 + 5);
-    	this.leaves_opaque = par1IconRegister.registerIcon("Dragon'sReach:" + temp + "_opaque");
+		String temp = this.getUnlocalizedName().substring(12);
+		this.blockIcon = this.registerIconForMod(par1IconRegister, temp);
+    	this.leaves_opaque = this.registerIconForMod(par1IconRegister, temp + "_opaque");
     }
 	
 	@Override
