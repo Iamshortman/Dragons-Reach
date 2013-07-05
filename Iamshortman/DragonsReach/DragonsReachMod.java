@@ -13,7 +13,6 @@ import Iamshortman.DragonsReach.Common.Block.BlockDragonsReachGrass;
 import Iamshortman.DragonsReach.Common.Block.BlockDragonsReachPortal;
 import Iamshortman.DragonsReach.Common.Block.BlockDragonsReachStone;
 import Iamshortman.DragonsReach.Common.Block.BlockDragonsReach;
-import Iamshortman.DragonsReach.Common.Enchantment.EnchantmentDragonsReach;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachCommonProxy;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachConfig;
 import Iamshortman.DragonsReach.Common.Items.ItemDragonsReach;
@@ -74,7 +73,11 @@ public class DragonsReachMod
 		proxy.RenderStuff();
 		BlockDragonsReach.initBlocks();
 		ItemDragonsReach.initItems();
-		EnchantmentDragonsReach.initEnchantments();
+		
+		//Removed Enchantments till i really do something with them
+		//EnchantmentDragonsReach.initEnchantments();
+		
+		
 		//Dimension Stuff
 		DimensionManager.registerProviderType(dimension, WorldProviderDragonsReach.class, false);
 		DimensionManager.registerDimension(dimension, dimension); 
