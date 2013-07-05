@@ -16,6 +16,7 @@ import Iamshortman.DragonsReach.Common.Block.BlockDragonsReach;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachCommonProxy;
 import Iamshortman.DragonsReach.Common.Forge.DragonsReachConfig;
 import Iamshortman.DragonsReach.Common.Items.ItemDragonsReach;
+import Iamshortman.DragonsReach.Common.TileEntity.TileEntityRainbowBridgeEmitter;
 import Iamshortman.DragonsReach.Common.World.WorldProviderDragonsReach;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -74,9 +75,11 @@ public class DragonsReachMod
 		BlockDragonsReach.initBlocks();
 		ItemDragonsReach.initItems();
 		
+		//Tile Entities Registering
+		GameRegistry.registerTileEntity(TileEntityRainbowBridgeEmitter.class, "RainbowBridgeEmitter");
+		
 		//Removed Enchantments till i really do something with them
 		//EnchantmentDragonsReach.initEnchantments();
-		
 		
 		//Dimension Stuff
 		DimensionManager.registerProviderType(dimension, WorldProviderDragonsReach.class, false);

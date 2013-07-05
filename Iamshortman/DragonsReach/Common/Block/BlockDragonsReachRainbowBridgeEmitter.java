@@ -1,5 +1,6 @@
 package Iamshortman.DragonsReach.Common.Block;
 
+import Iamshortman.DragonsReach.Common.TileEntity.TileEntityRainbowBridgeEmitter;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -29,7 +30,9 @@ public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-		return new TileEntity();
+		TileEntity tileEntity = new TileEntityRainbowBridgeEmitter();
+		tileEntity.setWorldObj(world);
+		return tileEntity;
 	}
 
 	/**
