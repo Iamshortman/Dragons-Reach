@@ -67,7 +67,7 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 		int pos[] = {this.xCoord, this.yCoord, this.zCoord};
 		
 		//Offsets the coords for the first time before the loop runs
-		offsetPostion(pos,offset);
+		offsetPostion(pos, offset, false);
 		
 		//TODO Make Bridge Length Save for power Consumption
 		for(int i = 0; i < 64; i++)
@@ -84,7 +84,7 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 				break;
 			}
 			
-			offsetPostion(pos,offset);
+			offsetPostion(pos, offset, false);
 		}
 	}
 
@@ -121,30 +121,52 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 		}
 		
 		int pos[] = {this.xCoord, this.yCoord, this.zCoord};
-		
-		//Offsets the coords for the first time before the loop runs
-		offsetPostion(pos,offset);
-		
-		for(int i = 0; i < 64; i++)
+		offsetPostion(pos, offset, false);
+		int length = 0;
+		//Finds how long the Bridge will go for
+		for(; length < 64; length++)
 		{
 			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
 			
+			if(ID == BlockDragonsReach.rainbowBridge.blockID || ID == 0)
+			{
+				offsetPostion(pos, offset, false);
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		//Moves Each Rainbow Block Forward one to act like it is light itself.
+		for(int i = length; i >= 0; i--)
+		{
+			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
 			if(ID == BlockDragonsReach.rainbowBridge.blockID)
 			{
 				this.worldObj.setBlockToAir(pos[0], pos[1], pos[2]);
-				//Exits the loop after a single block removal or if it finds a non-bridge Block.
-				break;
+				if(this.worldObj.isAirBlock(pos[0] + offset[0], pos[1] + offset[1], pos[2] + offset[2]) && i < 64)
+				{
+					this.worldObj.setBlock(pos[0] + offset[0], pos[1] + offset[1], pos[2] + offset[2], BlockDragonsReach.rainbowBridge.blockID, 0, 2);
+				}
 			}
 			
-			offsetPostion(pos,offset);
+			offsetPostion(pos,offset,true);
 		}
 	}
 	
-	private void offsetPostion(int[] pos, int[] offset)
+	private void offsetPostion(int[] pos, int[] offset, boolean negitive)
 	{
 		for(int i = 0; i < pos.length; i++)
 		{
-			pos[i] += offset[i];
+			if(!negitive)
+			{
+				pos[i] += offset[i];
+			}
+			else
+			{
+				pos[i] -= offset[i];
+			}
 		}
 	}
 
