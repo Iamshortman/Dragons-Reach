@@ -10,7 +10,7 @@ public class GenLayerDragonsReachBiomes extends GenLayer
 {
 
 	protected BiomeGenDragonsReachBase[] allowedBiomes =
-	{ BiomeGenDragonsReachBase.Plains, BiomeGenDragonsReachBase.Forest};
+	{ BiomeGenDragonsReachBase.Hills, BiomeGenDragonsReachBase.Forest};
 
 	public GenLayerDragonsReachBiomes(long seed)
 	{

@@ -42,6 +42,8 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class ChunkProviderDragonsReach implements IChunkProvider
 {
+	private int MaxWorldHeight = 128;
+	
 	/** RNG. */
 	private Random rand;
 
@@ -135,13 +137,13 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	{
 		byte byte0 = 2;
 		int k = byte0 + 1;
-		byte byte1 = 33;
+		byte byte1 = (byte) ((this.MaxWorldHeight / 4) + 1);
 		int l = byte0 + 1;
 
 		this.noiseArray = this.initializeNoiseFieldSkyland(this.noiseArray, par1 * byte0, 0, par2 * byte0, k, byte1, l);
 		for (int i1 = 0; i1 < byte0; i1++)
 			for (int j1 = 0; j1 < byte0; j1++)
-				for (int k1 = 0; k1 < 32; k1++)
+				for (int k1 = 0; k1 < (this.MaxWorldHeight / 4); k1++)
 				{
 					double d = 0.25D;
 					double d1 = this.noiseArray[(((i1 + 0) * l + (j1 + 0)) * byte1 + (k1 + 0))];
@@ -216,7 +218,7 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 				short byte0 = (short) BlockDragonsReach.grass.blockID;
 				short byte1 = (short) BlockDragonsReach.dirt.blockID;
 
-				for (int y = 127; y >= 0; y--)
+				for (int y = (this.MaxWorldHeight - 1); y >= 0; y--)
 				{
 					int index = xyzToArrayIndex(x, y, z);
 					
@@ -288,21 +290,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 			meta[i] = 0;
 		}
 
-		/*short[] idsSorted = new short[32768 * 2];
-
-		for (int y = 0; y < 128; ++y)
-		{
-			for (int z = 0; z < 16; ++z)
-			{
-				for (int x = 0; x < 16; ++x)
-				{
-					int idx = y << 8 | z << 4 | x;
-					int idx2 = x << 11 | z << 7 | y;
-					idsSorted[idx] = ids[idx2];
-				}
-			}
-		}*/
-
 		Chunk chunk = new Chunk(this.worldObj, ids, meta, par1, par2);
 
 		byte[] abyte1 = new byte[this.biomesForGeneration.length];
@@ -343,59 +330,12 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 			int k2 = x * i2 + i2 / 2;
 			for (int z = 0; z < zSize; z++)
 			{
-				int i3 = z * i2 + i2 / 2;
-
-				double d4 = 0.0D;
-				double d5 = (noise5[l1] + 256D) / 512D;
-
-				// What the Heck. d4 is always 0 so effectively that if
-				// statement is always false.
-				d5 *= d4;
-				if (d5 > 1.0D)
-				{
-					d5 = 1.0D;
-				}
-
-				// This whole Block is to set d6 to 0. God notch what the hell
-				// were you thinking. Yes this is Notch's 1.6 beta skylands code.
-				double d6 = noise6[l1] / 8000D;
-				if (d6 < 0.0D)
-				{
-					d6 = -d6 * 0.29999999999999999D;
-				}
-				d6 = (d6 * 3D) - 2D;
-				if (d6 > 1.0D)
-				{
-					d6 = 1.0D;
-				}
-				d6 /= 8D;
-				d6 = 0.0D;
-
-				// d5 Comes out of this Block at 0.5D. why so complicated?
-				if (d5 < 0.0D)
-				{
-					d5 = 0.0D;
-				}
-				d5 += 0.5D;
-
-				// Mmmm. i looks like because d6 is always 0 before this
-				// statement,
-				// after this statement it comes out as zero still
-				d6 = (d6 * (double) ySize) / 16D;
+				//TODO Finish New Biome System and write an Smoothing Algorithm for it.
 				
-				l1++;
-
-				double d7 = (double) ySize / 2D;
 				for (int j3 = 0; j3 < ySize; j3++)
 				{
 					//Value that is that will be put into the array
 					double d8 = 0.0D;
-					
-					double d9 = (((double) j3 - d7) * 8D) / d5;
-					if (d9 < 0.0D)
-					{
-						d9 *= -1D;
-					}
 					
 					double d10 = noise1[k1] / 512D;
 					double d11 = noise2[k1] / 512D;
@@ -413,7 +353,9 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 					{
 						d8 = d10 + (d11 - d10) * d12;
 					}
-					d8 -= 8D;
+					
+					//Where the Biome will apply its smoothed height value
+					d8 -= 20D;
 
 					int k3 = 32;
 					if (j3 > ySize - k3)

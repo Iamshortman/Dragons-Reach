@@ -13,7 +13,9 @@ public class BiomeGenDragonsReachPlains extends BiomeGenDragonsReachBase
 	{
 		super(par1);
 		this.setBiomeName("Dragon's Reach Plains");
-		this.setMinMaxHeight(0.1F, 0.3F);
+		
+		//Blocks From The top of the world gen
+		this.maxHeight = 40;
 	}
 
 	@Override

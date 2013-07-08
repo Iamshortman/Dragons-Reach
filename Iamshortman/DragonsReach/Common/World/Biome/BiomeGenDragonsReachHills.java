@@ -11,7 +11,9 @@ public class BiomeGenDragonsReachHills extends BiomeGenDragonsReachBase
 	{
 		super(par1);
 		this.setBiomeName("Dragon's Reach Mountians");
-		this.setMinMaxHeight(0.3F, 1.6F);
+		
+		//Blocks From The top of the world gen
+		this.maxHeight = 40;
 	}
 
 	@Override
