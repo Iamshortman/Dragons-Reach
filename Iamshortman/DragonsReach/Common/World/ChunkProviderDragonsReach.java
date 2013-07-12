@@ -59,11 +59,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen4;
 
-	/** A NoiseGeneratorOctaves used in generating terrain */
-	public NoiseGeneratorOctaves noiseGen5;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
-	public NoiseGeneratorOctaves noiseGen6;
 	public NoiseGeneratorOctaves mobSpawnerNoise;
 
 	/** Reference to the World object. */
@@ -95,28 +90,11 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	/** A double array that hold terrain noise from noiseGen2 */
 	double[] noise2;
 
-	/** A double array that hold terrain noise from noiseGen5 */
-	double[] noise5;
-
-	/** A double array that holds terrain noise from noiseGen6 */
-	double[] noise6;
-
 	/**
 	 * Used to store the 5x5 parabolic field that is used during terrain
 	 * generation.
 	 */
 	float[] parabolicField;
-	int[][] field_73219_j = new int[32][32];
-	{
-		// caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
-		// villageGenerator = (MapGenVillage)
-		// TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
-		// scatteredFeatureGenerator = (MapGenScatteredFeature)
-		// TerrainGen.getModdedMapGen(scatteredFeatureGenerator,
-		// SCATTERED_FEATURE);
-		// ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator,
-		// RAVINE);
-	}
 
 	public ChunkProviderDragonsReach(World par1World, long par2, boolean par4)
 	{
@@ -127,8 +105,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
 		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
-		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
-		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
 	}
 
@@ -313,12 +289,11 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 		{
 			par1ArrayOfDouble = new double[xSize * ySize * zSize];
 		}
-		double d = 684.41200000000003D;
-		double d1 = 684.41200000000003D;
-		noise5 = noiseGen5.generateNoiseOctaves(noise5, i, k, xSize, zSize, 1.121D, 1.121D, 0.5D);
-		noise6 = noiseGen6.generateNoiseOctaves(noise6, i, k, xSize, zSize, 200D, 200D, 0.5D);
-		d *= 2D;
+		double d = 684.412D * 2.5D;
+		double d1 = 684.412D;
+		
 		noise3 = noiseGen3.generateNoiseOctaves(noise3, i, j, k, xSize, ySize, zSize, d / 30D, d1 / 160D, d / 80D);
+		
 		noise1 = noiseGen1.generateNoiseOctaves(noise1, i, j, k, xSize, ySize, zSize, d, d1, d);
 		noise2 = noiseGen2.generateNoiseOctaves(noise2, i, j, k, xSize, ySize, zSize, d, d1, d);
 		int k1 = 0;
@@ -330,7 +305,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 			int k2 = x * i2 + i2 / 2;
 			for (int z = 0; z < zSize; z++)
 			{
-				//TODO Finish New Biome System and write an Smoothing Algorithm for it.
 				
 				for (int j3 = 0; j3 < ySize; j3++)
 				{
@@ -354,9 +328,10 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						d8 = d10 + (d11 - d10) * d12;
 					}
 					
-					//Where the Biome will apply its smoothed height value
 					d8 -= 20D;
-
+					
+					
+					//Smooths at the top and bottom of the gen
 					int k3 = 32;
 					if (j3 > ySize - k3)
 					{
@@ -369,6 +344,7 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						double d14 = (float) (k3 - j3) / ((float) k3 - 1.0F);
 						d8 = d8 * (1.0D - d14) + -30D * d14;
 					}
+					
 					par1ArrayOfDouble[k1] = d8;
 					k1++;
 				}
@@ -393,6 +369,12 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	 */
 	public void populate(IChunkProvider par1IChunkProvider, int ChunkX, int ChunkZ)
 	{
+		//Dont need to worry about Populateing right now
+		if(true)
+		{
+			return;
+		}
+		
 		int AbsoluteX = ChunkX * 16;
 		int AbsoluteZ = ChunkZ * 16;
 
