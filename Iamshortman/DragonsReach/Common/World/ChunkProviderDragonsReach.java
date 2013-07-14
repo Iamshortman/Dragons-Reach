@@ -42,7 +42,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class ChunkProviderDragonsReach implements IChunkProvider
 {
-	private int MaxWorldHeight = 128;
+	private int MaxWorldHeight = 160;
 	
 	/** RNG. */
 	private Random rand;
@@ -71,12 +71,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
-
-	/** Holds Village Generator */
-	private MapGenVillage villageGenerator = new MapGenVillage();
-
-	/** Holds ravine generator */
-	private MapGenBase ravineGenerator = new MapGenRavine();
 
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
@@ -116,7 +110,8 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 		byte byte1 = (byte) ((this.MaxWorldHeight / 4) + 1);
 		int l = byte0 + 1;
 
-		this.noiseArray = this.initializeNoiseFieldSkyland(this.noiseArray, par1 * byte0, 0, par2 * byte0, k, byte1, l);
+		this.noiseArray = this.initializeNoiseFieldSkylandTop(this.noiseArray, par1 * byte0, 0, par2 * byte0, k, byte1, l);
+		this.noiseArray = this.initializeNoiseFieldSkylandLower(this.noiseArray, par1 * byte0, 0, par2 * byte0, k, byte1, l);
 		for (int i1 = 0; i1 < byte0; i1++)
 			for (int j1 = 0; j1 < byte0; j1++)
 				for (int k1 = 0; k1 < (this.MaxWorldHeight / 4); k1++)
@@ -265,7 +260,7 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 		{
 			meta[i] = 0;
 		}
-
+		
 		Chunk chunk = new Chunk(this.worldObj, ids, meta, par1, par2);
 
 		byte[] abyte1 = new byte[this.biomesForGeneration.length];
@@ -280,20 +275,19 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	}
 
 	/**
-	 * generates a subset of the level's terrain data. Takes 7 arguments: the
+	 * generates a subset of the level's terrain Upper Level data. Takes 7 arguments: the
 	 * [empty] noise array, the position, and the size.
 	 */
-	private double[] initializeNoiseFieldSkyland(double[] par1ArrayOfDouble, int i, int j, int k, int xSize, int ySize, int zSize)
+	private double[] initializeNoiseFieldSkylandTop(double[] par1ArrayOfDouble, int i, int j, int k, int xSize, int ySize, int zSize)
 	{
 		if (par1ArrayOfDouble == null)
 		{
 			par1ArrayOfDouble = new double[xSize * ySize * zSize];
 		}
-		double d = 684.412D * 2.5D;
+		double d = 684.412D * 4.5D;
 		double d1 = 684.412D;
 		
-		noise3 = noiseGen3.generateNoiseOctaves(noise3, i, j, k, xSize, ySize, zSize, d / 30D, d1 / 160D, d / 80D);
-		
+		noise3 = noiseGen3.generateNoiseOctaves(noise3, i, j, k, xSize, ySize, zSize, d / 30D, d1 / 160D, d / 30D);
 		noise1 = noiseGen1.generateNoiseOctaves(noise1, i, j, k, xSize, ySize, zSize, d, d1, d);
 		noise2 = noiseGen2.generateNoiseOctaves(noise2, i, j, k, xSize, ySize, zSize, d, d1, d);
 		int k1 = 0;
@@ -305,7 +299,79 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 			int k2 = x * i2 + i2 / 2;
 			for (int z = 0; z < zSize; z++)
 			{
+				for (int j3 = 0; j3 < ySize; j3++)
+				{
+					//Value that is that will be put into the array
+					double d8 = 0.0D;
+					
+					double d10 = noise1[k1] / 512D;
+					double d11 = noise2[k1] / 512D;
+					double d12 = (noise3[k1] / 10D + 1.0D) / 2D;
+					
+					if (d12 < 0.0D)
+					{
+						d8 = d10;
+					}
+					else if (d12 > 1.0D)
+					{
+						d8 = d11;
+					}
+					else
+					{
+						d8 = d10 + (d11 - d10) * d12;
+					}
+							
+					//Smooths at the top and bottom of the gen. I think
+					int k3 = 32;
+					if (j3 > ySize - k3)
+					{
+						double d13 = (float) (j3 - (ySize - k3)) / ((float) k3 - 1.0F);
+						d8 = d8 * (1.0D - d13) + -30D * d13;
+					}
+					k3 = 8;
+					if (j3 < k3)
+					{
+						double d14 = (float) (k3 - j3) / ((float) k3 - 1.0F);
+						d8 = d8 * (1.0D - d14) + -30D * d14;
+					}
 				
+					par1ArrayOfDouble[k1] = d8;
+					k1++;
+				}
+
+			}
+
+		}
+
+		return par1ArrayOfDouble;
+	}
+
+	/**
+	 * generates a subset of the level's terrain Lower Level data. Takes 7 arguments: the
+	 * [empty] noise array, the position, and the size.
+	 */
+	private double[] initializeNoiseFieldSkylandLower(double[] par1ArrayOfDouble, int i, int j, int k, int xSize, int ySize, int zSize)
+	{
+		if (par1ArrayOfDouble == null)
+		{
+			par1ArrayOfDouble = new double[xSize * ySize * zSize];
+		}
+		
+		double d = 684.412D * 2.0D;
+		double d1 = 684.412D;
+		
+		noise3 = noiseGen3.generateNoiseOctaves(noise3, i, j, k, xSize, ySize, zSize, d / 30D, d1 / 160D, d / 30D);
+		noise1 = noiseGen1.generateNoiseOctaves(noise1, i, j, k, xSize, ySize, zSize, d, d1, d);
+		noise2 = noiseGen2.generateNoiseOctaves(noise2, i, j, k, xSize, ySize, zSize, d, d1, d);
+		int k1 = 0;
+		int l1 = 0;
+
+		int i2 = 16 / xSize;
+		for (int x = 0; x < xSize; x++)
+		{
+			int k2 = x * i2 + i2 / 2;
+			for (int z = 0; z < zSize; z++)
+			{
 				for (int j3 = 0; j3 < ySize; j3++)
 				{
 					//Value that is that will be put into the array
@@ -328,10 +394,10 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						d8 = d10 + (d11 - d10) * d12;
 					}
 					
-					d8 -= 20D;
+					//Make this Part of the Gen lower then the other
+					d8 -= 25D;
 					
-					
-					//Smooths at the top and bottom of the gen
+					//Smooths at the top and bottom of the gen. I think
 					int k3 = 32;
 					if (j3 > ySize - k3)
 					{
@@ -344,8 +410,13 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						double d14 = (float) (k3 - j3) / ((float) k3 - 1.0F);
 						d8 = d8 * (1.0D - d14) + -30D * d14;
 					}
+				
+					//Ignores all ready Generated Areas. 
+					if(par1ArrayOfDouble[k1] == 0)
+					{
+						par1ArrayOfDouble[k1] = d8;	
+					}
 					
-					par1ArrayOfDouble[k1] = d8;
 					k1++;
 				}
 
@@ -355,7 +426,6 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 
 		return par1ArrayOfDouble;
 	}
-
 	/**
 	 * Checks to see if a chunk exists at x, y
 	 */
@@ -369,6 +439,7 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	 */
 	public void populate(IChunkProvider par1IChunkProvider, int ChunkX, int ChunkZ)
 	{
+		
 		//Dont need to worry about Populateing right now
 		if(true)
 		{
