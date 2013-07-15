@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockDragonsReach extends Block
@@ -61,6 +62,8 @@ public class BlockDragonsReach extends Block
 	public static Block blackWoodLog;
 	public static Block blackWoodPlanks;
 	public static Block blackWoodLeaves;
+	public static Block blackWoodSapling;
+	
 	public static Block rainbowBridgeEmitter;
 	public static Block rainbowBridge;
 	
@@ -112,14 +115,17 @@ public class BlockDragonsReach extends Block
 		registerBlock(blackWoodPlanks, "BlackWood Planks");
 		OreDictionary.registerOre("plankWood", blackWoodPlanks);
 		
-		blackWoodLeaves = new BlockDragonsReachLeaves(2224).setCreativeTab(CreativeTabs.tabBlock).setUnlocalizedName("Dragon_leaves");
+		blackWoodLeaves = new BlockDragonsReachLeaves(2224).setCreativeTab(CreativeTabs.tabBlock).setHardness(0.2F).setLightOpacity(1).setStepSound(soundGrassFootstep).setUnlocalizedName("Dragon_leaves");
 		registerBlock(blackWoodLeaves, "BlackWood Leaves");
 		
-		rainbowBridgeEmitter = new BlockDragonsReachRainbowBridgeEmitter(2225).setUnlocalizedName("rainbowBridgeEmitter");
+		blackWoodSapling = new BlockDragonsReachSapling(2225).setHardness(0.0F).setStepSound(soundGrassFootstep).setUnlocalizedName("Dragon_sapling");
+		registerBlock(blackWoodSapling, "BlackWood Sapling");
+		
+		/*rainbowBridgeEmitter = new BlockDragonsReachRainbowBridgeEmitter(2225).setUnlocalizedName("rainbowBridgeEmitter");
 		registerBlock(rainbowBridgeEmitter, ItemBlockRotatable.class, "Rainbow Bridge Emitter");
 		
 		rainbowBridge = new BlockDragonsReachRainbowBridge(2226).setUnlocalizedName("Dragom_rainbowBrige");
-		registerBlock(rainbowBridge, "Rainbow Bridge");
+		registerBlock(rainbowBridge, "Rainbow Bridge");*/
 	}
 	
 	/**

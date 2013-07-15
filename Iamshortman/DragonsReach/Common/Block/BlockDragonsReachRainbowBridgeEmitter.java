@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
@@ -50,6 +51,13 @@ public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
 		this.setEmitterDefaultDirection(par1World, par2, par3, par4);
 	}
 
+	//TODO Use Bounding Box instead of using extra blocks for trails(This will be a lot simpler)
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    {
+        return null;
+    }
+	
+	
 	/**
 	 * sets Dispenser block direction so that the front faces an non-opaque
 	 * block; chooses west to be direction if all surrounding blocks are opaque.

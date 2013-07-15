@@ -168,7 +168,7 @@ public class BlockDragonsReachLeaves extends BlockDragonsReach implements IShear
 
 	    private void removeLeaves(World par1World, int par2, int par3, int par4)
 	    {
-	        this.dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
+	        this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
 	        par1World.setBlockToAir(par2, par3, par4);
 	    }
 
@@ -231,5 +231,17 @@ public class BlockDragonsReachLeaves extends BlockDragonsReach implements IShear
     public boolean isLeaves(World world, int x, int y, int z)
     {
         return true;
+    }
+    
+    @Override
+    public int quantityDropped(Random par1Random)
+    {
+        return par1Random.nextInt(20) == 0 ? 1 : 0;
+    }
+
+    @Override
+    public int idDropped(int par1, Random par2Random, int par3)
+    {
+        return BlockDragonsReach.blackWoodSapling.blockID;
     }
 }
