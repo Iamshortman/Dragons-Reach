@@ -9,8 +9,9 @@ import net.minecraft.world.gen.layer.IntCache;
 public class GenLayerDragonsReachBiomes extends GenLayer
 {
 
+	//Currently only 1 Biome Used. need to come up with a world Height System For Biomes some day
 	protected BiomeGenDragonsReachBase[] allowedBiomes =
-	{ BiomeGenDragonsReachBase.Hills, BiomeGenDragonsReachBase.Forest};
+	{ BiomeGenDragonsReachBase.Forest};
 
 	public GenLayerDragonsReachBiomes(long seed)
 	{

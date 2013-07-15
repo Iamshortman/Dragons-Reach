@@ -200,10 +200,12 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						j1 = -1;
 						continue;
 					}
+					
 					if (byte2 != BlockDragonsReach.stone.blockID)
 					{
 						continue;
 					}
+					
 					if (j1 == -1)
 					{
 						if (i1 <= 0)
@@ -211,7 +213,9 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 							byte0 = 0;
 							byte1 = (short) BlockDragonsReach.stone.blockID;
 						}
+						
 						j1 = i1;
+						
 						if (y >= 0)
 						{
 							ids[index] = byte0;
@@ -222,10 +226,12 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 						}
 						continue;
 					}
+					
 					if (j1 <= 0)
 					{
 						continue;
 					}
+					
 					j1--;
 					ids[index] = byte1;
 				}
@@ -439,15 +445,17 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 	 */
 	public void populate(IChunkProvider par1IChunkProvider, int ChunkX, int ChunkZ)
 	{
+		int AbsoluteX = ChunkX * 16;
+		int AbsoluteZ = ChunkZ * 16;
+		
+		BiomeGenDragonsReachBase biome = (BiomeGenDragonsReachBase) this.worldObj.getBiomeGenForCoords(AbsoluteX + 16, AbsoluteZ + 16);
+		biome.DecorateBiome(worldObj, rand, ChunkX, ChunkZ, AbsoluteX, AbsoluteZ);
 		
 		//Dont need to worry about Populateing right now
 		if(true)
 		{
 			return;
 		}
-		
-		int AbsoluteX = ChunkX * 16;
-		int AbsoluteZ = ChunkZ * 16;
 
 		for (int i3 = 0; i3 < 20; i3++)
 		{
@@ -489,8 +497,8 @@ public class ChunkProviderDragonsReach implements IChunkProvider
 		 * j14); }
 		 */
 
-		BiomeGenDragonsReachBase biome = (BiomeGenDragonsReachBase) this.worldObj.getBiomeGenForCoords(AbsoluteX + 16, AbsoluteZ + 16);
-		biome.DecorateBiome(worldObj, rand, ChunkX, ChunkZ, AbsoluteX, AbsoluteZ);
+		//BiomeGenDragonsReachBase biome = (BiomeGenDragonsReachBase) this.worldObj.getBiomeGenForCoords(AbsoluteX + 16, AbsoluteZ + 16);
+		//biome.DecorateBiome(worldObj, rand, ChunkX, ChunkZ, AbsoluteX, AbsoluteZ);
 	}
 
 	/**
