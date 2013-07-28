@@ -1,5 +1,11 @@
 package Iamshortman.DragonsReach;
 
+/**
+ * @Author Iamshortman
+ * File: ColorHelper.java
+ * Created: Jul 27, 2013, 9:03:17 PM
+ * Description: A basic utility file to breakdown the standard RGB color to it's separate color values.
+ */
 public class ColorHelper
 {
 	public static float getRed(int Color)

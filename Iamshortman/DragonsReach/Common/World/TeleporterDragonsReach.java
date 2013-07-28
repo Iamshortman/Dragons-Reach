@@ -18,6 +18,12 @@ import net.minecraft.world.PortalPosition;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
+/**
+ * @Author Iamshortman
+ * File: TeleporterDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Moves the Player to the Dragon's Reach, needs to be rewritten.
+ */
 public class TeleporterDragonsReach extends Teleporter
 {
 	private final WorldServer field_85192_a;

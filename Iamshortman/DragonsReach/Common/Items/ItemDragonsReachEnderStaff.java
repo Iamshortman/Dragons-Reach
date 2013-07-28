@@ -10,6 +10,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: ItemDragonsReachEnderStaff.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: A teleportation staff.
+ */
 public class ItemDragonsReachEnderStaff extends ItemDragonsReach
 {
 

@@ -5,6 +5,12 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+/**
+ * @Author Iamshortman
+ * File: DragonsReachCommonProxy.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The common specific proxy used for anything that needs to be done on both server and client side. 
+ */
 public class DragonsReachCommonProxy
 {
 

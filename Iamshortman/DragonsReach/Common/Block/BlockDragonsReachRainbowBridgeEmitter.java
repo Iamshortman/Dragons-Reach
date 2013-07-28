@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
@@ -17,6 +18,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachRainbowBridgeEmitter.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The rainbow bridge emitter block.
+ */
 public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
 {
 	@SideOnly(Side.CLIENT)
@@ -97,7 +104,7 @@ public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
 	}
 
 	@Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack)
     {
         int l = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLiving);
         par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);

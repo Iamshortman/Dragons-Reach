@@ -4,6 +4,12 @@ package Iamshortman.DragonsReach.Common.Forge;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+/**
+ * @Author Iamshortman
+ * File: DragonsReachConfig.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The class that grabs all the id's from the configuration file. 
+ */
 public class DragonsReachConfig
 {
 	//Blocks

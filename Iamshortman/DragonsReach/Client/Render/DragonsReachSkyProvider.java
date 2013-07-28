@@ -13,10 +13,15 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IRenderHandler;
 
+
+/**
+ * @Author Iamshortman
+ * File: DragonsReachSkyProvider.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Renders the custom sky in the Dragon's Reach. 
+ */
 public class DragonsReachSkyProvider extends IRenderHandler
 {
-
-	
 	private int starGLCallList;
 	private int glSkyList;
 	private int glSkyList2;
@@ -32,7 +37,6 @@ public class DragonsReachSkyProvider extends IRenderHandler
 	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc)
 	{	
-
         //GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
         GL11.glPushMatrix();
         GL11.glDepthMask(false);

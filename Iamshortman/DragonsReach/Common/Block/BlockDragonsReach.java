@@ -23,6 +23,12 @@ import net.minecraft.util.Icon;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic block class for all of Dragon's Reach, contains all the registering and texture functions needed for blocks.
+ */
 public class BlockDragonsReach extends Block
 {
 	public BlockDragonsReach(int par1, Material par2Material)

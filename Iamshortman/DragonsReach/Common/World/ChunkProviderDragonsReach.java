@@ -40,6 +40,12 @@ import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
+/**
+ * @Author Iamshortman
+ * File: ChunkProviderDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Provides the Chunks given the world seeds.
+ */
 public class ChunkProviderDragonsReach implements IChunkProvider
 {
 	private int MaxWorldHeight = 160;

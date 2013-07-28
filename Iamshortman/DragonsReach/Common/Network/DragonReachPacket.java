@@ -9,6 +9,12 @@ import cpw.mods.fml.common.network.Player;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
 
+/**
+ * @Author Iamshortman
+ * File: DragonReachPacket.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The abstract packet type used by the packet handlers. 
+ */
 public abstract class DragonReachPacket 
 {
 	public static HashMap<String, Class> packetTypes = new HashMap();

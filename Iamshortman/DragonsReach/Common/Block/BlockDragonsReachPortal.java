@@ -12,6 +12,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachPortal.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Crappy portal block, copy of vinnila's, needs a lot of work.
+ */
 public class BlockDragonsReachPortal extends BlockPortal
 {
 	public BlockDragonsReachPortal(int id)

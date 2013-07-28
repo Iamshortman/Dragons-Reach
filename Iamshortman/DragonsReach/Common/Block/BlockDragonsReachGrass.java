@@ -15,6 +15,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachGrass.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic grass block class.
+ */
 public class BlockDragonsReachGrass extends BlockDragonsReach 
 {
 	

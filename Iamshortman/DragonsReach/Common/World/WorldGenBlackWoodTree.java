@@ -10,6 +10,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
 
+/**
+ * @Author Iamshortman
+ * File: WorldGenBlackWoodTree.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Creates the Blackwood Tree in world.
+ */
 public class WorldGenBlackWoodTree extends WorldGenerator
 {
     /** The minimum height of a generated tree. */

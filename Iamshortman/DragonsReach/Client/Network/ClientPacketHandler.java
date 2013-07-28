@@ -8,6 +8,12 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
+/**
+ * @Author Iamshortman
+ * File: ClientPacketHandler.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The Client-side specific packet handler. 
+ */
 public class ClientPacketHandler implements IPacketHandler
 {
 	

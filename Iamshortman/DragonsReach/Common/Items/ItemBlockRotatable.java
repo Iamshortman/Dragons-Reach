@@ -4,9 +4,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 /**
- * Used To Render Blocks Rotated in inventory like furnaces 
- * @author josh
- *
+ * @Author Iamshortman
+ * File: ItemBlockRotatable.java
+ * Created: Jul 27, 2013, 9:03:17 PM
+ * Description: Used To render blocks rotated in inventory like furnaces. 
  */
 public class ItemBlockRotatable extends ItemBlock
 {
@@ -16,8 +17,9 @@ public class ItemBlockRotatable extends ItemBlock
 		super(par1);
 	}
 	
+
 	@Override
-	public int getItemDamageFromStack(ItemStack item)
+	public int getDamage(ItemStack stack) 
 	{
 		return 3;
 	}

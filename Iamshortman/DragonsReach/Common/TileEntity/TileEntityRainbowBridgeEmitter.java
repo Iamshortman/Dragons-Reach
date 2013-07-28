@@ -6,6 +6,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
+/**
+ * @Author Iamshortman
+ * File: TileEntityRainbowBridgeEmitter.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The Rainbow Bridge Emitter's Tile Entity.
+ */
 public class TileEntityRainbowBridgeEmitter extends TileEntity
 {
 

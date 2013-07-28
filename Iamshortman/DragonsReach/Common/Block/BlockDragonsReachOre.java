@@ -11,6 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachOre.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic ore block class, deals with dropping the correct item and amount.
+ */
 public class BlockDragonsReachOre extends BlockDragonsReach
 {
     public BlockDragonsReachOre(int par1)

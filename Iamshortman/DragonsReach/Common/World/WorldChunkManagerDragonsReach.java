@@ -17,6 +17,12 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
+/**
+ * @Author Iamshortman
+ * File: WorldChunkManagerDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Provides the different chunks being generated, given that i can not change height it does not do anything yet.
+ */
 public class WorldChunkManagerDragonsReach extends WorldChunkManager
 {
 	private GenLayer GenBiomes;

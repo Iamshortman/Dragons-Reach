@@ -14,6 +14,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
 
+/**
+ * @Author Iamshortman
+ * File: PacketDamageArmor.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The packet responsible for damaging armor that a player is wearing, used for wing packs because flight happens client side. 
+ */
 public class PacketDamageArmor extends DragonReachPacket
 {
 	int damageAmount;

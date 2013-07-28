@@ -20,6 +20,12 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
+/**
+ * @Author Iamshortman
+ * File: WorldProviderDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Provides some special information about the Dragon's Reach.
+ */
 public class WorldProviderDragonsReach extends WorldProvider
 {	
 	public WorldProviderDragonsReach()

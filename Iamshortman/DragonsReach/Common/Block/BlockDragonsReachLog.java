@@ -13,6 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachLog.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic log block class.
+ */
 public class BlockDragonsReachLog extends BlockDragonsReach
 {
     @SideOnly(Side.CLIENT)

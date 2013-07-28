@@ -11,6 +11,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachSapling.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic sapling block class.
+ */
 public class BlockDragonsReachSapling extends BlockDragonsReach
 {
 

@@ -15,6 +15,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
+/**
+ * @Author Iamshortman
+ * File: BlockDragonsReachLeaves.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic leave block class.
+ */
 public class BlockDragonsReachLeaves extends BlockDragonsReach implements IShearable
 {
 	

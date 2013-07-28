@@ -7,6 +7,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
+/**
+ * @Author Iamshortman
+ * File: ItemDragonsReach.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: The basic item class for all of Dragon's Reach, contains all the registering and texture functions needed for items.
+ */
 public class ItemDragonsReach extends Item
 {
 	public ItemDragonsReach(int par1)

@@ -6,6 +6,12 @@ import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 import net.minecraft.world.gen.layer.IntCache;
 
+/**
+ * @Author Iamshortman
+ * File: GenLayerDragonsReachBiomes.java
+ * Created: Jul 27, 2013, 9:01:33 PM
+ * Description: Provides an array of what biomes to be generated, but until a height system is added will not really be used.
+ */
 public class GenLayerDragonsReachBiomes extends GenLayer
 {
 
