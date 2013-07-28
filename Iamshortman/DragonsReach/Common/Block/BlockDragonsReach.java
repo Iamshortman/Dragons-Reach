@@ -52,7 +52,7 @@ public class BlockDragonsReach extends Block
 	 */
 	public static Icon registerIconForMod(IconRegister par1IconRegister, String name)
 	{
-		return par1IconRegister.registerIcon("Dragon'sReach:" + name);
+		return par1IconRegister.registerIcon("dragonsreach:" + name);
 	}
 	//End of Block Class
 	

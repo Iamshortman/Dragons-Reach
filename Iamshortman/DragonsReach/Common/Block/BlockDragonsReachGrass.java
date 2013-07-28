@@ -54,9 +54,9 @@ public class BlockDragonsReachGrass extends BlockDragonsReach
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("Dragon'sReach:grass_side");
-        this.iconGrassTop = par1IconRegister.registerIcon("Dragon'sReach:grass_top");
-        this.iconGrassBottom = par1IconRegister.registerIcon("Dragon'sReach:dirt");
+        this.blockIcon = registerIconForMod(par1IconRegister, "grass_side");
+        this.iconGrassTop = registerIconForMod(par1IconRegister, "grass_top");
+        this.iconGrassBottom = registerIconForMod(par1IconRegister, "dirt");
     }
     
     /**

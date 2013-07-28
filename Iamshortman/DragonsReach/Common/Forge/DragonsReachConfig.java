@@ -44,7 +44,7 @@ public class DragonsReachConfig
 		oreBloodstoneID = config.getBlock("oreBloodstone", 3009).getInt();
 		
 		//Items
-		enderStaffID = config.getItem("Ender Staff", 3060).getInt();
+		enderStaffID = config.getItem("Ender Staff", 4000).getInt();
 		
 		config.save();
 	}

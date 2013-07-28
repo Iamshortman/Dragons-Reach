@@ -24,7 +24,7 @@ public class ItemDragonsReach extends Item
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("Dragon'sReach:" + this.getUnlocalizedName());
+		this.itemIcon = par1IconRegister.registerIcon("dragonsreach:" + this.getUnlocalizedName());
 	}
 	
 	//My Items Start here

@@ -47,7 +47,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class DragonsReachMod
 {
-	public static final String modID = "DragonsReach";
+	public static final String modID = "Dragon's Reach";
 
 	@Instance(value = modID)
 	public static DragonsReachMod Instance;
