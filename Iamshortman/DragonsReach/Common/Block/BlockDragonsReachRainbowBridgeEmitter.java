@@ -58,10 +58,20 @@ public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
 		this.setEmitterDefaultDirection(par1World, par2, par3, par4);
 	}
 
-	//TODO Use Bounding Box instead of using extra blocks for trails(This will be a lot simpler)
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
     {
-        return null;
+    	TileEntityRainbowBridgeEmitter emitter = (TileEntityRainbowBridgeEmitter) par1World.getBlockTileEntity(par2, par3, par4);
+    	if(emitter == null)
+    	{
+    		return null;
+    	}
+    	
+    	int[] offset = emitter.getMetaOffset(emitter.getBlockMetadata());
+    	for(int i = 0; i < offset.length; i++)
+    	{
+    		offset[i] *= emitter.length;
+    	}
+        return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + offset[0], par3 + offset[1], par4 + offset[2]);
     }
 	
 	

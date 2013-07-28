@@ -71,7 +71,6 @@ public class BlockDragonsReach extends Block
 	public static Block blackWoodSapling;
 	
 	public static Block rainbowBridgeEmitter;
-	public static Block rainbowBridge;
 	
 	public static void initBlocks()
 	{
@@ -127,11 +126,8 @@ public class BlockDragonsReach extends Block
 		blackWoodSapling = new BlockDragonsReachSapling(2225).setHardness(0.0F).setStepSound(soundGrassFootstep).setUnlocalizedName("Dragon_sapling");
 		registerBlock(blackWoodSapling, "BlackWood Sapling");
 		
-		/*rainbowBridgeEmitter = new BlockDragonsReachRainbowBridgeEmitter(2225).setUnlocalizedName("rainbowBridgeEmitter");
+		rainbowBridgeEmitter = new BlockDragonsReachRainbowBridgeEmitter(2226).setUnlocalizedName("rainbowBridgeEmitter");
 		registerBlock(rainbowBridgeEmitter, ItemBlockRotatable.class, "Rainbow Bridge Emitter");
-		
-		rainbowBridge = new BlockDragonsReachRainbowBridge(2226).setUnlocalizedName("Dragom_rainbowBrige");
-		registerBlock(rainbowBridge, "Rainbow Bridge");*/
 	}
 	
 	/**

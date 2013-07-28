@@ -14,6 +14,7 @@ import net.minecraftforge.common.ForgeDirection;
  */
 public class TileEntityRainbowBridgeEmitter extends TileEntity
 {
+	public double length = 0;
 
 	public TileEntityRainbowBridgeEmitter()
 	{
@@ -33,42 +34,14 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 			}
 			else
 			{
-				this.unEmitBridge(meta);
+				this.unEmitBridge();
 			}
 		}
 	}
 	
 	private void EmitBridge(int blockMetadata)
 	{
-		// X, Y, and Z movement offsets
-		int offset[] = {0,0,0};
-		switch(blockMetadata)
-		{
-		case 0:
-			//Downward
-			offset[1] = -1;
-			break;
-		case 1:
-			//Upwards
-			offset[1] = 1;
-			break;
-		case 2:
-			//North
-			offset[2] = -1;
-			break;
-		case 3:
-			//South
-			offset[2] = 1;
-			break;
-		case 4:
-			//West
-			offset[0] = -1;
-			break;
-		case 5:
-			//East
-			offset[0] = 1;
-			break;
-		}
+		int[] offset = this.getMetaOffset(blockMetadata);
 		
 		int pos[] = {this.xCoord, this.yCoord, this.zCoord};
 		
@@ -79,85 +52,27 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 		for(int i = 0; i < 64; i++)
 		{
 			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
-			
-			if(ID != BlockDragonsReach.rainbowBridge.blockID)
+			if(ID == 0)
 			{
-				if(ID == 0)
-				{
-					this.worldObj.setBlock(pos[0], pos[1], pos[2], BlockDragonsReach.rainbowBridge.blockID, 0, 2);
-				}
-				//Exits the loop after a single block place or if it finds a non-bridge Block.
-				break;
+				this.length += 0.5F;
 			}
-			
+			else
+			{
+				this.length = i;
+			}
 			offsetPostion(pos, offset, false);
 		}
 	}
 
-	private void unEmitBridge(int blockMetadata)
+	private void unEmitBridge()
 	{
-		// X, Y, and Z movement offsets
-		int offset[] = {0,0,0};
-		switch(blockMetadata)
+		if(this.length > 0)
 		{
-		case 0:
-			//Downward
-			offset[1] = -1;
-			break;
-		case 1:
-			//Upwards
-			offset[1] = 1;
-			break;
-		case 2:
-			//North
-			offset[2] = -1;
-			break;
-		case 3:
-			//South
-			offset[2] = 1;
-			break;
-		case 4:
-			//West
-			offset[0] = -1;
-			break;
-		case 5:
-			//East
-			offset[0] = 1;
-			break;
+			this.length -= 0.5F;
 		}
-		
-		int pos[] = {this.xCoord, this.yCoord, this.zCoord};
-		offsetPostion(pos, offset, false);
-		int length = 0;
-		//Finds how long the Bridge will go for
-		for(; length < 64; length++)
+		else if(this.length < 0)
 		{
-			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
-			
-			if(ID == BlockDragonsReach.rainbowBridge.blockID || ID == 0)
-			{
-				offsetPostion(pos, offset, false);
-			}
-			else
-			{
-				break;
-			}
-		}
-
-		//Moves Each Rainbow Block Forward one to act like it is light itself.
-		for(int i = length; i >= 0; i--)
-		{
-			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
-			if(ID == BlockDragonsReach.rainbowBridge.blockID)
-			{
-				this.worldObj.setBlockToAir(pos[0], pos[1], pos[2]);
-				if(this.worldObj.isAirBlock(pos[0] + offset[0], pos[1] + offset[1], pos[2] + offset[2]) && i < 64)
-				{
-					this.worldObj.setBlock(pos[0] + offset[0], pos[1] + offset[1], pos[2] + offset[2], BlockDragonsReach.rainbowBridge.blockID, 0, 2);
-				}
-			}
-			
-			offsetPostion(pos,offset,true);
+			this.length = 0;
 		}
 	}
 	
@@ -176,10 +91,46 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 		}
 	}
 
+	public int[] getMetaOffset(int metadata)
+	{
+		// X, Y, and Z movement offsets
+		int offset[] = {0,0,0};
+		switch(metadata)
+		{
+		case 0:
+			//Downward
+			offset[1] = -1;
+			break;
+		case 1:
+			//Upwards
+			offset[1] = 1;
+			break;
+		case 2:
+			//North
+			offset[2] = -1;
+			break;
+		case 3:
+			//South
+			offset[2] = 1;
+			break;
+		case 4:
+			//West
+			offset[0] = -1;
+			break;
+		case 5:
+			//East
+			offset[0] = 1;
+			break;
+		}
+		return offset;
+	}
+	
+	
 	@Override
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound)
 	{
 		super.writeToNBT(par1nbtTagCompound);
+		par1nbtTagCompound.setDouble("length", length);
 	}
 	
 	
@@ -187,5 +138,6 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound)
 	{
 		super.readFromNBT(par1nbtTagCompound);
+		this.length = par1nbtTagCompound.getDouble("length");
 	}
 }
