@@ -41,26 +41,13 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 	
 	private void EmitBridge(int blockMetadata)
 	{
-		int[] offset = this.getMetaOffset(blockMetadata);
-		
-		int pos[] = {this.xCoord, this.yCoord, this.zCoord};
-		
-		//Offsets the coords for the first time before the loop runs
-		offsetPostion(pos, offset, false);
-		
-		//TODO Make Bridge Length Save for power Consumption
-		for(int i = 0; i < 64; i++)
+		if(this.length < 64)
 		{
-			int ID = this.worldObj.getBlockId(pos[0], pos[1], pos[2]);
-			if(ID == 0)
-			{
-				this.length += 0.5F;
-			}
-			else
-			{
-				this.length = i;
-			}
-			offsetPostion(pos, offset, false);
+			this.length += 0.5F;
+		}
+		else if(this.length > 64)
+		{
+			this.length = 64;
 		}
 	}
 
@@ -73,21 +60,6 @@ public class TileEntityRainbowBridgeEmitter extends TileEntity
 		else if(this.length < 0)
 		{
 			this.length = 0;
-		}
-	}
-	
-	private void offsetPostion(int[] pos, int[] offset, boolean negitive)
-	{
-		for(int i = 0; i < pos.length; i++)
-		{
-			if(!negitive)
-			{
-				pos[i] += offset[i];
-			}
-			else
-			{
-				pos[i] -= offset[i];
-			}
 		}
 	}
 

@@ -67,11 +67,35 @@ public class BlockDragonsReachRainbowBridgeEmitter extends BlockContainer
     	}
     	
     	int[] offset = emitter.getMetaOffset(emitter.getBlockMetadata());
-    	for(int i = 0; i < offset.length; i++)
+    	double[] pos1 = {par2, par3, par4};
+    	double[] pos2 = {par2 + 1, par3 + 1, par4 + 1};
+    	double[] point1 = pos1;
+    	double[] point2 = pos2;
+    	//TODO Update Length On Client Side Or this will never work.
+    	
+    	//This Section is just a bunch of complicated Math i though up while at work
+    	if(emitter.length > 0)
     	{
-    		offset[i] *= emitter.length;
+        	for(int i = 0; i < offset.length; i++)
+        	{
+        		if(offset[i] == -1)
+        		{
+        			point1 = pos1;
+        			point1[i] -= emitter.length;
+        			point2 = pos2;
+        			break;
+        		}
+        		else if(offset[i] == 1)
+        		{
+        			point1 = pos1;
+        			point2 = pos2;
+        			point2[i] += emitter.length;
+        			break;
+        		}
+        		
+        	}
     	}
-        return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + offset[0], par3 + offset[1], par4 + offset[2]);
+        return AxisAlignedBB.getBoundingBox(point1[0], point1[1], point1[2], point2[0], point2[1], point2[2]);
     }
 	
 	
